@@ -12,7 +12,6 @@ class Movie:
     Esta clase representa la ENTIDAD 'Película'.
     Su ÚNICA RESPONSABILIDAD es definir qué es una película y
     cuáles son sus reglas de negocio.
-    Esto es Cohesión y SRP en acción.
     """
     title: str
     director: str

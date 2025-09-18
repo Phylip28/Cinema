@@ -1,2 +1,4 @@
 pydantic
+pydantic_settings
 flask
+sqlalchemy
