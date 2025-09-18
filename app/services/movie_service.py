@@ -34,3 +34,7 @@ class MovieService:
         Caso de uso: Obtener una película por su ID.
         """
         return self.movie_repository.get_by_id(movie_id)
+    
+    def get_all_movies(self) -> list[Movie]:
+        """Caso de uso: Obtener todas las películas."""
+        return self.movie_repository.get_all()

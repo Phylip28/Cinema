@@ -32,3 +32,17 @@ def create_movie_endpoint():
     finally:
         # Cerramos el generador y la sesión de la base de datos
         next(service_generator, None)
+    
+@movie_router.route('/movies', methods=['GET'])
+def get_movies_endpoint():
+    """Endpoint para obtener todas las películas."""
+    service_generator = get_movie_service()
+    movie_service = next(service_generator)
+    try:
+        movies = movie_service.get_all_movies()
+        # Nota: Usamos from_orm (o model_validate en Pydantic v2) para convertir
+        # nuestros objetos de dominio a schemas.
+        movies_schema = [MovieSchema.from_orm(movie).model_dump() for movie in movies]
+        return jsonify(movies_schema), 200
+    finally:
+        next(service_generator, None)    
